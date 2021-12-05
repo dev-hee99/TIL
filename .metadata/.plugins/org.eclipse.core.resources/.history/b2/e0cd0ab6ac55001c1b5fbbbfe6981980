@@ -1,0 +1,40 @@
+package jsonusage;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
+public class jsonparserMain {
+ 		
+	public static void main(String[] args) throws IOException, ParseException {
+		String rootPath = System.getProperty("user.dir");
+		BufferedReader reader = new BufferedReader(
+			new FileReader(rootPath+"/json/objdata.json")
+		);
+		
+		String data;
+		
+		StringBuffer sb = new StringBuffer();
+		
+		while((data=reader.readLine())!= null) {
+			sb.append(data);
+		}
+		
+		data = sb.toString();
+		JSONParser parser = new JSONParser();
+		JSONArray jsonarray = (JSONArray)parser.parse(data);
+		
+		for(int i=0; i<jsonarray.size();i++) {
+			JSONObject obj = (JSONObject)jsonarray.get(i);
+			String content = (String)obj.get("content");
+			System.out.println(content);
+		}
+		
+	}
+}

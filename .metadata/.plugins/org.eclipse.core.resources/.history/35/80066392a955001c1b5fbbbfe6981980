@@ -1,0 +1,12 @@
+package jsonusage;
+
+import java.nio.file.Path;
+
+public class jsonparserMain {
+ 		
+	public static void main(String[] args) {
+		String path = Path.class.getName();
+		System.out.println(path);
+	}
+
+}
